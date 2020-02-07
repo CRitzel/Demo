@@ -1,3 +1,5 @@
 * Hello World!
 
-- Hoje � sexta-feira!
+- Hoje é sexta-feira!
+
+# Alteração Rebase
