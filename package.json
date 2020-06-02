@@ -4,6 +4,7 @@
   "description": "* Hello World!",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint index.js",
     "test": "echo Testing"
   },
   "repository": {
