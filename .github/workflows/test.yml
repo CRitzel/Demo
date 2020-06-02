@@ -23,5 +23,9 @@ jobs:
 
     - name: Test
       run: yarn test --coverage
-    env:
-      CI: true
+   
+    - name: Check linting
+      run: yarn lint
+
+    - name: Check commit message
+      run: yarn commitlint-travis
