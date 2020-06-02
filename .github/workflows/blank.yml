@@ -1,32 +1,22 @@
-name: TestCI
-
+name: Ci
 on: 
   push:
     branches: 
-      - master 
+      - master
     paths:
-      - '**.js'
-    
+      - "**.js"
+
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node_version: ['8', '10', '12']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-    outputs: 
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
+    runs-on: ubuntu-latest
     steps:
     - id: 'step1'
-      run: echo "::set-output name=test::hello"
+      run: echo Hello World!
     - id: 'step2'
-      run: echo "::set-output name=test::world"
+      run: echo Hoje é terça-feira
 
   test:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build 
     steps:
-    - run: echo ${{needs.build.outputs.output1}} ${{needs.build.outputs.output2}}
-
- 
+    - run: Estamos em 2020
