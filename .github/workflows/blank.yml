@@ -1,18 +1,12 @@
 name: Ci
 on: 
   push:
-    branches: 
-      - master
-    paths:
-      - "**.js"
+    branches: [ master ]
+    paths: [ "**.js" ]
 
 jobs:
   build:
-    runs-on: ${{matrix.os}}
-    strategy: 
-      matrix:
-        node_version: ['8','10','12']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: ubuntu-latest
     outputs: 
       output1: ${{ steps.step1.outputs.teste }}
       output2: ${{ steps.step2.outputs.teste }}
