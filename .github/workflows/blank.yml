@@ -18,7 +18,7 @@ jobs:
       output2: ${{ steps.step2.outputs.teste }}
     steps:
     - id: 'step1'
-      run: echo "::set-output name=teste::${{matrix.os}}"
+      run: echo "::set-output name=teste::Hello"
     - id: 'step2'
       run: echo "::set-output name=teste::World"
 
