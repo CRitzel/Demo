@@ -1,3 +1,3 @@
 function greeting(){
-    alert("Hello World!!!");
+    alert("Hello World!!");
 }
