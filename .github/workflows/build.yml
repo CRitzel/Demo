@@ -26,6 +26,9 @@ jobs:
         npm install
         npm run build --if-present
         npm test
-
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo test2
       
   
