@@ -1,3 +1,3 @@
-function greeting(){
-    alert("Hello World!!");
+function greeting() {
+    alert("Hello World!");
 }
