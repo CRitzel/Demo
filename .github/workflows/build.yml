@@ -19,9 +19,9 @@ jobs:
       output2: ${{steps.step2.outputs.teste}}
     steps:
       - id: 'step1'
-        run: "::set-output name=teste::Hello"
+        run: echo "::set-output name=teste::Hello"
       - id: 'step2'
-        run: "::set-output name=teste::World"
+        run: echo "::set-output name=teste::World"
     
   test:
     runs-on: ubuntu-latest
