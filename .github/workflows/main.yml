@@ -23,8 +23,8 @@ jobs:
         with: 
           text: 'Hello there'
       - run: | 
-        echo ${{ steps.converte.outputs.html }} > lorem_1.md
-        cat lorem_1.md
+          echo ${{steps.converte.outputs.html}} > lorem_1.md
+          cat lorem_1.md
               
 
         
