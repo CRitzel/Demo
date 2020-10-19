@@ -1,9 +1,9 @@
-name: Convert_Wiki
+name: Wiki CI
 
 on: [ push ]
 
 jobs:
-  convert:
+  Publish wiki:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -14,13 +14,12 @@ jobs:
       env:
         GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
-  convert_via_pandoc:
+  Convert to HTML:
     runs-on: ubuntu-18.04
     steps:
       - run: echo "foo" > input.txt  # create an example file
       - uses: docker://pandoc/core:2.9
         with:
           args: |
-            --standalone
             --output=index.html
             input.txt
