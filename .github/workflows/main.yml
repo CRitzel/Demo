@@ -13,3 +13,14 @@ jobs:
         path: "Documentação"
       env:
         GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+
+  convert_via_pandoc:
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo "foo" > input.txt  # create an example file
+      - uses: docker://pandoc/core:2.9
+        with:
+          args: |
+            --standalone
+            --output=index.html
+            input.txt
