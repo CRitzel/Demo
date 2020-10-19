@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: ${{github.repository}}.wiki
+        #  with:
+          # repository: ${{github.repository}}.wiki
       - name: Commit files
         run: |
           git config --local user.email "cassioritzel@gmail.com"
