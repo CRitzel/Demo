@@ -6,19 +6,21 @@ jobs:
   convert:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        #  with:
-          # repository: ${{github.repository}}.wiki
+      - uses: textbook/git-checkout-submodule-action@master
       - name: Commit files
         run: |
           git config --local user.email "cassioritzel@gmail.com"
           git config --local user.name "CRitzel"
           git add .
           git commit -m "Add changes"
-      - name: Push changes to wiki repo
+      - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          repository: ${{github.repository}}.wiki    
+          repository: ${{github.repository}}    
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-          
+
+
+
+
+- name: Checkout submodules
