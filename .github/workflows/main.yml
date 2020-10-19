@@ -6,19 +6,20 @@ jobs:
   convert:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        #  with:
-          # repository: ${{github.repository}}.wiki
-      - name: Commit files
-        run: |
-          git config --local user.email "cassioritzel@gmail.com"
-          git config --local user.name "CRitzel"
-          git add .
-          git commit -m "Add changes"
-      - name: Push changes to wiki repo
-        uses: ad-m/github-push-action@master
-        with:
-          repository: ${{github.repository}}.wiki    
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout submodules
+      uses: srt32/git-actions@v0.0.3
+      with:
+        args: git submodule update --init --recursive
+    - name: Commit files
+      run: |
+        git config --local user.email "cassioritzel@gmail.com"
+        git config --local user.name "CRitzel"
+        git add .
+        git commit -m "Add changes"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        repository: ${{github.repository}}    
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
-          
+
