@@ -23,3 +23,5 @@ jobs:
           args: |
             --output=index.html
             input.txt
+      - run: "cat input.txt"
+        
