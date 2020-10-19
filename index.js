@@ -1,4 +1,4 @@
-import { hello } from '../nodeeapp.wiki/teste.js';
+const hello = require('./nodeapp.wiki/teste.js');
 let val = hello();  // val is "Hello";
 console.log(val);
 
