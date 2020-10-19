@@ -23,5 +23,9 @@ jobs:
           args: |
             --output=index.html
             input.txt
-      - run: output
+      - uses: actions/upload-artifact@master
+        with:
+          name: output
+          path: output
+
         
