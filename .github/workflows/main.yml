@@ -20,6 +20,9 @@ jobs:
       - run: "sudo apt install pandoc"
       - uses: actions/checkout@v2
       - id: "converte" 
+        run: |
+          pandoc Documentação/WikiTeste.md -s -o test.html
+          ls -a
         uses: lifepal/markdown-to-html@v1.1 
         with: 
           text: $(cat Documentação/WikiTeste.md)
