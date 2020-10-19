@@ -12,7 +12,7 @@ jobs:
           git config --local user.email "cassioritzel@gmail.com"
           git config --local user.name "CRitzel"
           git submodule update --remote --merge
-          git log
+          git status
     - name: Push to master
       uses: ad-m/github-push-action@master
       with:
