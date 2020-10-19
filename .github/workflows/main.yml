@@ -1,24 +1,15 @@
 name: Convert_Wiki
 
-on: [ gollum ]
+on: [ push ]
 
 jobs:
   convert:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Upload Documentation to Wiki
+      uses: SwiftDocOrg/github-wiki-publish-action@v1
       with:
-        submodules: recursive
-    - name: Checkout & merge submodules
-      run: |
-          git config --local user.email "cassioritzel@gmail.com"
-          git config --local user.name "CRitzel"
-          git status
-    - name: Push to master
-      uses: ad-m/github-push-action@master
-      with:
-        repository: ${{github.repository}}    
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-     
-
-
+        path: "Documentation"
+      env:
+        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
