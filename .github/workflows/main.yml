@@ -22,7 +22,7 @@ jobs:
         - uses: lifepal/markdown-to-html@v1.1 
           with: 
             text: 'Hello there'
-          run "cat html"
+          run: "cat html"
           
 
         
