@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Upload Documentation to Wiki
+    - name: Upload documentation to wiki
       uses: SwiftDocOrg/github-wiki-publish-action@v1
       with:
         path: "Documentação"
@@ -17,10 +17,20 @@ jobs:
   Wiki2HTML:
     runs-on: ubuntu-18.04
     steps:
-      - run: "sudo apt install pandoc"
+      - name: Instala pandoc
+        run: "sudo apt install pandoc"
       - uses: actions/checkout@v2
-      - id: "converte" 
+      - name: Cria wiki.html 
         run: |
-          pandoc Documentação/WikiTeste.md -s -o test.html
-          ls -a
-        
+          pandoc Documentação/WikiTeste.md -s -o wiki.html
+          cat wiki.html
+      - name: Commit wiki.html
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Envia Wiki.html" -a
+      - name: Push wiki.html
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
