@@ -9,10 +9,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: ${{github.repository}}.wiki
-
-      - name: check wiki repo content
-        run: |
-          ls -al
       - name: Commit files
         run: |
           git config --local user.email "cassioritzel@gmail.com"
@@ -22,5 +18,7 @@ jobs:
       - name: Push changes to wiki repo
         uses: ad-m/github-push-action@master
         with:
-          repository: ${{github.repository}}.wiki    # specify the wiki repo and push the update.
+          repository: ${{github.repository}}.wiki    
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+          
