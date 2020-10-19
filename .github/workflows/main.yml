@@ -22,6 +22,6 @@ jobs:
         with:
           args: |
             --output=index.html
-            index.js
-      - run: "cat input.txt"
+            input.txt
+      - run: "cat input.html"
         
