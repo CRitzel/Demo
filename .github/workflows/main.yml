@@ -21,29 +21,6 @@ jobs:
       - id: "converte" 
         uses: lifepal/markdown-to-html@v1.1 
         with: 
-          text: 'name: Wiki CI
-
-on: [ push ]
-
-jobs:
-  Publish_Wiki:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Upload Documentation to Wiki
-      uses: SwiftDocOrg/github-wiki-publish-action@v1
-      with:
-        path: "Documentação"
-      env:
-        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-
-  Wiki2HTML:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - id: "converte" 
-        uses: lifepal/markdown-to-html@v1.1 
-        with: 
           text: '---
 __Advertisement :)__
 
@@ -290,12 +267,6 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 *here be dragons*
 :::
 '
-      - run: | 
-          echo "${{steps.converte.outputs.html}}" > lorem_1.html
-          cat lorem_1.md
-              
-
-        '
       - run: | 
           echo "${{steps.converte.outputs.html}}" > lorem_1.html
           cat lorem_1.html
