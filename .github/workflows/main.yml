@@ -19,6 +19,7 @@ jobs:
     steps:
         - uses: actions/checkout@v2
         - uses: lifepal/markdown-to-html@v1.1 
-          with: text: 'Hello there'
+          with: 
+            text: 'Hello there'
 
         
