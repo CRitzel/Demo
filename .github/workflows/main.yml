@@ -8,9 +8,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Checkout & merge submodules
-      uses: srt32/git-actions@v0.0.3
-      with:
-        args: git submodule update --remote --merge
+      run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git submodule update --remote --merge
+    - name: Push to master
       uses: ad-m/github-push-action@master
       with:
         repository: ${{github.repository}}    
