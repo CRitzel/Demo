@@ -28,7 +28,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Envia Wiki.html" -a
+          git commit -am "Envia Wiki.html" -a
       - name: Push wiki.html
         uses: ad-m/github-push-action@master
         with:
