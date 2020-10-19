@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
         - uses: actions/checkout@v2
-        - uses: lifepal/markdown-to-html@v1.1 with: text: 'Hello there'
+        - uses: lifepal/markdown-to-html@v1.1 
+          with: text: 'Hello there'
 
         
