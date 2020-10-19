@@ -11,10 +11,10 @@ jobs:
       uses: srt32/git-actions@v0.0.3
       with:
         args: git submodule update --remote --merge
-    - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         repository: ${{github.repository}}    
         github_token: ${{ secrets.GITHUB_TOKEN }}
+     
 
 
