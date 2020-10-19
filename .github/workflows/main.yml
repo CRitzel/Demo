@@ -23,11 +23,4 @@ jobs:
         run: |
           pandoc Documentação/WikiTeste.md -s -o test.html
           ls -a
-        uses: lifepal/markdown-to-html@v1.1 
-        with: 
-          text: $(cat Documentação/WikiTeste.md)
-      - run: | 
-          echo "${{steps.converte.outputs.html}}" > lorem_1.html
-              
-
         
