@@ -14,21 +14,16 @@ jobs:
       env:
         GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
-
-
-
-
-
-Wiki2HTML:
+  Wiki2HTML:
     runs-on: ubuntu-18.04
     steps:
+      - name: Instala pandoc
+        run: "sudo apt install pandoc"
       - uses: actions/checkout@v2
-      - id: action 
-        uses: docker://pandoc/core:2.9
-        with:
-          args: |  # allows you to break string into multiple lines
-            --output=index.html
-            Documentação.TesteAction
+      - name: Cria wiki.html 
+        run: |
+          pandoc Documentação/WikiTeste.md -s -o wiki.html
+          cat wiki.html
       - name: Commit wiki.html
         run: |
           git config --local user.email "action@github.com"
@@ -40,4 +35,3 @@ Wiki2HTML:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-
