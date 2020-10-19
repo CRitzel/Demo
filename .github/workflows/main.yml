@@ -17,6 +17,7 @@ jobs:
   Wiki2HTML:
     runs-on: ubuntu-18.04
     steps:
+      - run "sudo dpkg -i $DEB"
       - uses: actions/checkout@v2
       - id: "converte" 
         uses: lifepal/markdown-to-html@v1.1 
@@ -24,7 +25,6 @@ jobs:
           text: $(cat Documentação/WikiTeste.md)
       - run: | 
           echo "${{steps.converte.outputs.html}}" > lorem_1.html
-          cat lorem_1.html
               
 
         
