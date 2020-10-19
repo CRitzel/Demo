@@ -11,8 +11,8 @@ jobs:
           repository: ${{github.repository}}.wiki
 
       - name: check wiki repo content
-             run: |
-               ls -al
+        run: |
+          ls -al
       - name: Commit files
         run: |
           git config --local user.email "cassioritzel@gmail.com"
