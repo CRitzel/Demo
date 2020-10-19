@@ -22,7 +22,9 @@ jobs:
         uses: lifepal/markdown-to-html@v1.1 
         with: 
           text: 'Hello there'
-      - run: "cat ${{steps.converte.outputs.html}}"
-          
+      - run: | 
+        echo ${{ steps.converte.outputs.html }} > lorem_1.md
+        cat lorem_1.md
+              
 
         
