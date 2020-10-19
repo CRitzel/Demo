@@ -17,11 +17,12 @@ jobs:
   Wiki2HTML:
     runs-on: ubuntu-18.04
     steps:
-        - uses: actions/checkout@v2
-        - uses: lifepal/markdown-to-html@v1.1 
-          with: 
-            text: 'Hello there'
-        - run: "cat html"
+      - uses: actions/checkout@v2
+      - id: "converte" 
+        uses: lifepal/markdown-to-html@v1.1 
+        with: 
+          text: 'Hello there'
+      - run: "cat ${{steps.converte.outputs.html}}"
           
 
         
