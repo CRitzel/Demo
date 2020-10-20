@@ -23,16 +23,9 @@ jobs:
       - name: Instala pandoc
         run: "sudo apt install pandoc"
       - uses: actions/checkout@v2
-      - id: "pandoc"
-        uses: docker://pandoc/core:2.9
-        with:
-          args: |  # allows you to break string into multiple lines
-            --output=wiki.html
-            docs/WikiTeste.md
-
-      # - name: Cria wiki.html 
-      #   run: |
-      #     pandoc docs/WikiTeste.md -s -o wiki.html
+      - name: Cria wiki.html 
+        run: |
+          pandoc docs/WikiTeste.md -s -o wiki.html
       - name: Commit wiki.html
         run: |
           ls
