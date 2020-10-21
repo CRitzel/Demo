@@ -28,8 +28,8 @@ jobs:
           find docs/md -type f -exec iconv -f iso-8859-1 -t utf-8 "{}" -o "{}.UTF8" \;
           find docs/md -type f -name "*.UTF8" -execdir pandoc "{}" -s -o  "../html/"{} \;
           rm docs/md/*.UTF8
-          cd docs/html
-          rename 's/.md.UTF8/.html/' *    
+          for i in docs/html/* do mv "$i" "${i/.md.UTF8/.html}" done
+  
       - name: Commit wiki.html
         run: |
           git config --local user.email "action@github.com"
