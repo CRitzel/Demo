@@ -29,7 +29,8 @@ jobs:
           find docs/md -type f -name "*.UTF8" -execdir pandoc "{}" -s -o  "../html/"{} \;
           rm docs/md/*.UTF8
           cd docs/html
-          rename 's/.md.UTF8/.html/' *    
+          sudo apt install rename
+          rename -f 's/.md.UTF8/.html/' *   
       - name: Commit wiki.html
         run: |
           git config --local user.email "action@github.com"
