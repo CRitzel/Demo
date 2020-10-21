@@ -6,11 +6,11 @@ __Advertisement :)__
 - __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
   i18n with plurals support and easy syntax.
 
-You will like those projects! 
+You will like those projects!
 
 ---
 
-# h1 Heading 8-) 
+# h1 Heading 8-)
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading

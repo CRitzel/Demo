@@ -25,14 +25,17 @@ jobs:
       - uses: actions/checkout@v2
       - name: Cria wiki.html 
         run: |
-          pandoc docs/WikiTeste.md -s -o wiki.html
+          find docs/md -type f -exec iconv -f iso-8859-1 -t utf-8 "{}" -o "{}.UTF8" \;
+          find docs/md -type f -name "*.UTF8" -execdir pandoc "{}" -s -o  "../html/"{} \;
+          rm docs/md/*.UTF8
+          cd docs/html
+          rename 's/.md.UTF8/.html/' *    
       - name: Commit wiki.html
         run: |
-          ls
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Envia Wiki.html"
+          git diff-index --quiet HEAD || git commit -m "Envia Wiki.html"
       - name: Push wiki.html
         uses: ad-m/github-push-action@master
         with:
