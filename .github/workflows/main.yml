@@ -1,44 +1,44 @@
-name: Wiki CI
+# name: Wiki CI
 
-on: 
-  push:
-    paths:
-      - "docs/**"
+# on: 
+#   push:
+#     paths:
+#       - "docs/**"
 
-jobs:
-  Publish_Wiki:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Upload documentation to wiki
-      uses: SwiftDocOrg/github-wiki-publish-action@v1
-      with:
-        path: "docs"
-      env:
-        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+# jobs:
+#   Publish_Wiki:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Upload documentation to wiki
+#       uses: SwiftDocOrg/github-wiki-publish-action@v1
+#       with:
+#         path: "docs"
+#       env:
+#         GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
-  Wiki2HTML:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Instala pandoc
-        run: "sudo apt install pandoc"
-      - uses: actions/checkout@v2
-      - name: Cria wiki.html 
-        run: |
-          find docs/md -type f -name "*.md" -exec iconv -f iso-8859-1 -t utf-8 "{}" -o "{}.UTF8" \;
-          find docs/md -type f -name "*.UTF8" -execdir pandoc "{}" -s -o  "../html/"{} \;
-          rm docs/md/*.UTF8
-          cd docs/html
-          sudo apt install rename
-          rename -f 's/.md.UTF8/.html/' *   
-      - name: Commit wiki.html
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git diff-index --quiet HEAD || git commit -m "Envia Wiki.html"
-      - name: Push wiki.html
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+#   Wiki2HTML:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Instala pandoc
+#         run: "sudo apt install pandoc"
+#       - uses: actions/checkout@v2
+#       - name: Cria wiki.html 
+#         run: |
+#           find docs/md -type f -name "*.md" -exec iconv -f iso-8859-1 -t utf-8 "{}" -o "{}.UTF8" \;
+#           find docs/md -type f -name "*.UTF8" -execdir pandoc "{}" -s -o  "../html/"{} \;
+#           rm docs/md/*.UTF8
+#           cd docs/html
+#           sudo apt install rename
+#           rename -f 's/.md.UTF8/.html/' *   
+#       - name: Commit wiki.html
+#         run: |
+#           git config --local user.email "action@github.com"
+#           git config --local user.name "GitHub Action"
+#           git add .
+#           git diff-index --quiet HEAD || git commit -m "Envia Wiki.html"
+#       - name: Push wiki.html
+#         uses: ad-m/github-push-action@master
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           branch: ${{ github.ref }}
