@@ -1,2 +1,1 @@
-const a = "ббб";
-const б = "ннн";
+"hoje й sexta feira"
