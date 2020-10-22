@@ -19,7 +19,7 @@ jobs:
       with:
         path: "temp"
       env:
-        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.TESTE }}
     - name: Remove pasta temp
       run: rm -r temp
 
