@@ -9,11 +9,11 @@ jobs:
   Publish_Wiki:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - name: Upload documentation to wiki
       uses: SwiftDocOrg/github-wiki-publish-action@v1
       with:
-        path: "docs"
+        path: "docs/md"
       env:
         GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
