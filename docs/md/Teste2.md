@@ -1,2 +1,1 @@
-Hoje � sexta-feira! ááááá
-
+Hoje � sexta-feira!
