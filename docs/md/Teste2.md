@@ -1,1 +1,1 @@
-Hoje � sexta-feira! ééééé
+Hoje � sexta-feira!
