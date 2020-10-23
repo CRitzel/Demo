@@ -14,12 +14,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Cria wiki.html 
         run: |
-          find . -type f -name "*.md" -exec iconv -f iso-8859-1 -t utf-8 "{}" -o "{}.UTF8" \;
-          find . -type f -name "*.UTF8" -execdir pandoc "{}" -s -o  "../html/"{} \;
+          find teste/md -type f -name "*.md" -exec iconv -f iso-8859-1 -t utf-8 "{}" -o "{}.UTF8" \;
+          find teste/md -type f -name "*.UTF8" -execdir pandoc "{}" -s -o  "../html/{}.html" \;
+          mv **/*.html docs/html
           rm docs/md/*.UTF8
           cd docs/html
           sudo apt install rename
-          rename -f 's/.md.UTF8/.html/' *   
+          rename -f 's/.md.UTF8.html/.html/' *   
       - name: Commit wiki.html
         run: |
           git config --local user.email "action@github.com"
