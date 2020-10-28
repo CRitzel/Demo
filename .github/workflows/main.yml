@@ -12,21 +12,19 @@ jobs:
       - name: Instala pandoc
         run: "sudo apt install pandoc"
       - uses: actions/checkout@v2
-      - name: Cria wiki.html 
+      - name: Cria arquivos html 
         run: |
-          find teste/md -type f -name "*.md" -exec iconv -f iso-8859-1 -t utf-8 "{}" -o "{}.UTF8" \;
-          find teste/md -type f -name "*.UTF8" -execdir pandoc "{}" -s -o  "../html/{}.html" \;
-          mv **/*.html docs/html
-          rm docs/md/*.UTF8
-          cd docs/html
+          cp -R teste/md/* teste/html
+          find teste/html -type f -name "*.md" -exec iconv -f iso-8859-1 -t utf-8 "{}" -o "{}.UTF8" \; -exec rm "{}" \;
+          find teste/html -type f -name "*.UTF8" -exec pandoc "{}" -s -o  "{}.html" \; -exec rm "{}" \;
           sudo apt install rename
-          rename -f 's/.md.UTF8.html/.html/' *   
+          find teste/html -name "*.UTF8.html" -exec rename -v 's/\.md.UTF8.html$/\.html/i' {} \;
       - name: Commit wiki.html
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git diff-index --quiet HEAD || git commit -m "Envia Wiki.html"
+          git diff-index --quiet HEAD || git commit -m "Gera arquivos html"
       - name: Push wiki.html
         uses: ad-m/github-push-action@master
         with:
